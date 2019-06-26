@@ -1,0 +1,28 @@
+.box{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    display: inline-block;
+    margin-right: 20px;
+}
+.highlight{
+    animation-name: highlight;
+    animation-duration: 4s;
+}
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+@keyframes highlight {
+    0%   {opacity: 1;}
+    50%  {opacity: 0.4;}
+    100%  {opacity: 1;}
+  }
