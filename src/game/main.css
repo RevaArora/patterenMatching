@@ -4,7 +4,13 @@
     border: 1px solid black;
     display: inline-block;
     margin-right: 20px;
+    cursor: pointer;
+    box-shadow: 0 9px #999;
 }
+.box:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 .highlight{
     animation-name: highlight;
     animation-duration: 4s;
