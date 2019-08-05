@@ -20,11 +20,11 @@ class MainComponent extends Component {
             green:"",
             yellow:"",
             blue:"",
-            userInputPattern:[]
+            userInputPattern:[],
+            message:"Click PLAY to play the pattern, and play after that"
         }
-        console.log("Click play to play the pattern");
     }
-    
+   
     playPattern(){
         this.state.inputCounter = 0;
         this.state.userInputPattern = [];
@@ -48,6 +48,7 @@ class MainComponent extends Component {
         this.setState({[element]:"highlight" });
     }   
     recordinput(e){
+        this.setState({message:"Recording input..."});
         if(this.state.inputCounter<4){
             if(this.state.userInputPattern.indexOf(e.target.id)==-1){
                 this.state.userInputPattern.push(e.target.id);
@@ -60,9 +61,10 @@ class MainComponent extends Component {
     }
     validatePattern(){
         if(this.arrays_equal(this.state.userInputPattern,this.state.currentPattern)){
-            console.log("yaiii");
+            this.setState({message:"Thats Correct ! You moved to nextLevel"});
+            setTimeout(()=>{this.setState({message:"Click PLAY to play the pattern, and play after that"})},2000);
         }else{
-            console.log("Awwww");
+            this.setState({message:"Thats not correct, lets try again, Click PLAY to play pattern"})
         }
         this.state.inputCounter = 0;
         this.state.userInputPattern = [];
@@ -72,7 +74,7 @@ class MainComponent extends Component {
     }
     render(){
         return(<div>
-            <header><h1>Pattern Game</h1> <h4>Level 1</h4></header>
+            <header><h4>Level {this.state.level}</h4><h1 >{this.state.message}</h1> </header>
             <section>
                 <div id="red" className={"box red "+this.state.red } onClick={this.recordinput.bind(this)}></div>
                 <div id="blue" className={"box blue "+this.state.blue } onClick={this.recordinput.bind(this)}></div>
